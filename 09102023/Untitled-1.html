@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+    
+    <script>
+        function encryptMessage() {
+            var mensagemAberta = document.getElementById('mensagemAberta').value;
+            var chave = 5; 
+
+            var mensagemCriptografada = '';
+            for (var i = 0; i < mensagemAberta.length; i++) {
+                var charCode = mensagemAberta.charCodeAt(i);
+                var encryptedCharCode = charCode + chave;
+                mensagemCriptografada += String.fromCharCode(encryptedCharCode);
+            }
+
+            document.getElementById('mensagemCriptografada').value = mensagemCriptografada;
+
+            
+            document.getElementById('mensagemAberta').value = '';
+        }
+
+        function decryptMessage() {
+            var mensagemCriptografada = document.getElementById('mensagemCriptografada').value;
+            var chave = 5; 
+            var mensagemAberta = '';
+            for (var i = 0; i < mensagemCriptografada.length; i++) {
+                var charCode = mensagemCriptografada.charCodeAt(i);
+                var decryptedCharCode = charCode - chave;
+                mensagemAberta += String.fromCharCode(decryptedCharCode);
+            }
+
+            document.getElementById('mensagemAberta').value = mensagemAberta;
+        }
+    </script>
+</head>
+<body>
+    <form name="frmDados">
+        Mensagem Aberta: <input type="text" id="mensagemAberta" placeholder="Informe a mensagem aberta"><br>
+        Mensagem Criptografada: <input type="text" id="mensagemCriptografada" placeholder="Informe a mensagem criptografada"><br>
+        <input type="button" value="Criptografar" onclick="encryptMessage();">
+        <input type="button" value="Descriptografar" onclick="decryptMessage();">
+        <input type="reset" value="Limpar"><br>
+    </form>
+</body>
+</html>
